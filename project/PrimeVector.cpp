@@ -3,7 +3,12 @@ using namespace Math;
 
 PrimeVector PrimeVector::upTo(uint16_t max)
 {
-   return PrimeVector(35);
+   return PrimeVector(max);
+}
+
+PrimeVector::~PrimeVector()
+{
+	delete m_primes;
 }
 
 PrimeVector::PrimeVector(uint16_t max)
@@ -27,28 +32,27 @@ void PrimeVector::calculatePrimes(uint16_t max)
    int c = 0;
    for (int i = 0; i < max; i++)
    {
-      if (isPrime(max))
+      if (isPrime(i))
       {
          m_primes[c++] = i;
       }
    }
-   m_max = c - 1;
+   m_max = c;
 }
 
 bool PrimeVector::isPrime(uint16_t value) const
 {
    if (value < 2)
    {
-      return true;
+      return false;
    }
 
    for (uint16_t i = 2; i < value; i++)
    {
       if (value % i == 0)
       {
-         return true;
+         return false;
       }
    }
-
-   return false;
+   return true;
 }
