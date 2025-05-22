@@ -8,7 +8,7 @@ PrimeVector PrimeVector::upTo(uint16_t max)
 
 PrimeVector::~PrimeVector()
 {
-	delete m_primes;
+	delete[] m_primes;
 }
 
 PrimeVector::PrimeVector(uint16_t max)
